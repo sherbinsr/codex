@@ -1,0 +1,235 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <img src="../assets/logo.png" width="120px" height="100px" alt="logo">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon text-white">
+        <img src="../assets/list.jpg">
+      </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">About Us</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/contact">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="header-content">         
+    <h2 class="quote fade-in">
+      <strong class="green">{{quotes.welcome}}</strong>
+      {{quotes.quote}}
+    </h2>      
+    <p class="text-center text-muted fade-in">{{quotes.secondQuote}}</p>      
+    <button class="btn fade-in" type="button">
+      <img src="../assets/send-fill.png">&nbsp;{{quotes.getInTouchBtn}}
+    </button>     
+  </div>
+</header>
+<br>
+<section class="home py-5">
+    <div class="container-lg">
+        <div class="row  min-vh-100 align-items-center align-content-center">
+            <div class="col-md-6  mt-5 mt-md-0">
+                <div class="home-img  text-center">
+                    <img src="../assets/aboutus.png" class=" mw-100" alt="profile img" width="300px" height="320px">
+                </div>
+            </div>
+            <div class="col-md-6  mt-5 mt-md-0 order-md-first">
+                <div class="about-text">
+                <h2 class="fs-4 text-white">About CodeX </h2>
+                <br>
+                <h2  class="fs-4 text-white">{{aboutus.heading}}</h2>
+                <br>
+                <p class="about-data text-white">
+                  {{ aboutus.data | slice:0:500 }}... <!-- Initially show only 100 characters -->
+                  <span *ngIf="showMore">{{ aboutus.data.slice(100) }}</span>
+                </p>
+                <p class="green-underline text-white" (click)="toggleReadMore()">
+                  {{ showMore ? 'READ LESS' : 'READ MORE' }} <img src="../assets/chevron-right.png" *ngIf="!showMore">
+                  <img src="../assets/chevron-right.png" *ngIf="showMore"> <!-- Change icon when expanded -->
+                </p>
+                  </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="glance">
+<div class="container"  [@foobar]="state">
+    <h2 class="text-white text-center">
+        {{glance.glanceHeader}}<strong class="green">{{glance.glanceGreen}}</strong>
+        </h2>
+        <p class="text-white text-center">
+            {{glance.glanceMessage}}
+        </p>
+        <div class="text-center">
+        <button class="btn" type="button">
+            <img src="../assets/send-fill.png">&nbsp;{{glance.glanceBtn}}
+         </button>
+        </div>
+</div>
+</section>
+<br><br>
+<br>
+<div class="services container mt-5"  [@foobar]="state">
+    <br>
+    <h2 class="fs-4  text-center text-white">Services</h2>
+    <p class="text-center text-white">Alticom offers affordable budget-friendly services regarding administrative solutions. Our services include:</p>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let service of services; let i = index">
+        <div class="card service-card ">
+          <div class="card-body text-center d-flex flex-column ">
+            <img class="card-img-top mx-auto d-block" src="{{service.link}}" alt="Card image cap">
+            <h5 class="card-title">{{ service.title }}</h5>
+    
+            <!-- Show only a part of the description initially, and toggle the rest -->
+            <p class="card-text">
+              {{ service.description | slice: 0: 300 }}...
+              <span *ngIf="readMore[i]">{{ service.description.slice(100) }}</span>
+            </p>
+    
+            <!-- Toggle the 'READ MORE' / 'READ LESS' text on click -->
+            <p class="green-underline text-white" (click)="togglesReadMore(i)">
+              {{ readMore[i] ? 'READ LESS' : 'READ MORE' }} <img src="../assets/chevron-right.png" *ngIf="!readMore[i]">
+              <img src="../assets/chevron-down.png" *ngIf="readMore[i]">
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>  <br>  <br>  <br>
+    <div class="service-footer text-white"  [@foobar]="state">
+        <div class="text-center"> 
+        <button class="btn" type="button">
+             <img src="../assets/send-fill.png">&nbsp;Contact Us
+             </button>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="../assets/whatsapp.png">&nbsp;  +91 9861100307
+            </div>   
+        </div>
+        <br><br>
+        <h2 class="fs-4  text-center text-white"  [@foobar]="state">Technologies that we majorly use for <strong class="green"> Website & App Development </strong></h2>
+       <br>   <br>   <br>
+        <marquee class="wave">
+          <img src="../assets/pic8.png" width="120" height="10%"/>&nbsp;&nbsp;&nbsp;
+          <img src="../assets/pic9.png" width="120" height="50%"/>&nbsp;&nbsp;&nbsp;
+          <img src="../assets/pic1.png" width="100" height="50%"/> &nbsp;&nbsp;&nbsp;
+          <img src="../assets/pic2.png" width="80" height="80%"/>&nbsp;&nbsp;&nbsp;
+           <img src="../assets/pic3.png" width="80" height="50%"/>&nbsp;&nbsp;&nbsp;
+              <img src="../assets/pic4.png" width="80" height="50%"/>&nbsp;&nbsp;&nbsp;
+             <img src="../assets/pic5.png" width="80" height="50%"/>&nbsp;&nbsp;&nbsp;
+              <img src="../assets/pic6.png" width="80" height="50%"/>&nbsp;&nbsp;&nbsp;
+               <img src="../assets/pic7.png" width="120" height="60%"/>&nbsp;&nbsp;&nbsp;
+          </marquee>
+          <br>   <br>   <br>   <br>
+          <footer
+                   class="text-center text-lg-start text-white">
+                   <div class="foot">
+         
+             <!-- Section: Social media -->
+             <section
+                      class="d-flex justify-content-between "
+                      >
+               <!-- Left -->
+               <div class="me-5">
+                 <h4 class="text-muted"> <strong class="green">Get connected with me on social networks: </strong></h4>
+               </div>
+               <!-- Left -->
+         
+               <!-- Right -->
+               <div >
+                 <a href="https://www.facebook.com/sherbin.sherbin.908 target="_blank class="text-dark me-4">
+                   <i class="fab fa-facebook-f green"></i>
+                 </a>
+                 <a href="https://www.linkedin.com/in/sherbin-s-07704a249 target=" class="text-dark me-4">
+                   <i class="fab fa-linkedin-in green"></i>
+                 </a>
+                 <a href="https://instagram.com/sherbin__sr?utm_medium=copy_link target=" class="text-dark me-4">
+                   <i class="fab fa-instagram green"></i>
+                 </a>
+                 
+                 <a href="https://wa.me/+919677472562?text=Hi%20there%20..." class="text-dark me-4">
+                   <i class="fab fa-whatsapp green"></i>
+                 </a>
+               
+               </div>
+               <!-- Right -->
+             </section>
+             <!-- Section: Social media -->
+         
+             <!-- Section: Links  -->
+             <section class="">
+               <div class="container text-center text-md-start mt-5">
+                 <!-- Grid row -->
+                 <div class="row mt-3">
+                   <!-- Grid column -->
+                   <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                      <a href="https://www.snapchat.com/add/sherbin_sr?share_id=mmrVwEBGgiE&locale=en-US"> <img src="../assets/logo.png" width="100px" height="100px"></a>
+                   </div>
+                   <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                     <!-- Content -->
+                     <h6 class="text-uppercase fw-bold">Our Services</h6>
+                     <hr
+                         class="mb-4 mt-0 d-inline-block mx-auto"
+                         style="width: 60px; background-color: #7c4dff; height: 2px"
+                         />
+                         <p>
+                          <img src="../assets/rightarrow.png"> App Design and Development
+                        </p>
+                     <p>
+                       <img src="../assets/rightarrow.png"> Web Design and Development
+                     </p>
+                     <p>
+                      <img src="../assets/rightarrow.png"> Website Maintenance
+                    </p>
+                    <p>
+                      <img src="../assets/rightarrow.png"> Digital Marketing
+                    </p>
+                    <p>
+                      <img src="../assets/rightarrow.png"> 3d Animation
+                    </p>
+                   </div>
+                   <!-- Grid column -->
+
+                   <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                       <!-- Links -->
+                     <h6 class="text-uppercase fw-bold">Contact</h6>
+                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px"
+                         />
+                     <p><i class="fas fa-home mr-3"></i> Kanniyakumari, India, 629172</p>
+                     <p><i class="fas fa-envelope mr-3"></i> Codex.solutions.pvt</p>
+                     <p><i class="fas fa-phone mr-3"></i> + 91 93457 38390</p>
+                    
+                            </div>
+                   <!-- Grid column -->
+                       </div>
+                 <!-- Grid row -->
+                   </div>
+             </section>
+                   <!-- Section: Links  -->
+         
+         
+            <!-- Copyright -->
+             <div class="text-center p-3"style="background-color: rgba(0, 0, 0, 0.2)">  © 2024 Copyright:
+                    <a class="text-dark" href="mailto:sherbinsyles31@gmail.com"><strong class="green">Codex</strong></a>
+                       </div>
+                 <!-- Copyright -->
+                  </div>
+           </footer>
+      </div>
+
+         

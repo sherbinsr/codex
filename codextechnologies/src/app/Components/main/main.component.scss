@@ -1,0 +1,83 @@
+header {
+    width: 100vw;
+    height:300px;
+    background-image: url("/assets/section.jpg");
+    background-position: bottom;
+    background-size: cover;
+    padding-top:100px;
+    text-align: center;
+   
+  }
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+.green
+{
+   color:#7ED957;
+}
+.quote
+{
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+}
+.btn
+{
+  background-color:#7ED957;
+  color:#fff;
+
+}
+.about-data {
+
+  text-align: justify;
+}
+.green-underline
+{
+  text-decoration: underline;
+  text-decoration-color: #7ED957;
+  text-decoration-thickness: 3px;
+}
+.services
+{
+  width: 100vw;
+    height:300px;
+    background-image: url("/assets/servicebanner.jpg");
+    background-position: bottom;
+    background-size: cover;
+}
+.service-card {
+  background-color: #121212;
+  border: 1px solid transparent;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  border: 1px solid green;
+}
+
+.service-card .card-body {
+  color: white;
+}
+
+.service-card .btn-primary {
+  background-color: #1a73e8;
+  border: none;
+}
+
+.service-card .btn-primary:hover {
+  background-color: #0056b3;
+}
+.card-img-top
+{
+  width: 50px;
+  height: fit-content;
+}
