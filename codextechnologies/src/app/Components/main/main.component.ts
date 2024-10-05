@@ -19,6 +19,12 @@ const style2 = style({
       state('hide', style2),
       transition('show => hide', animate('700ms ease-out')),
       transition('hide => show', animate('1000ms ease-in'))
+    ]),
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('1s ease-out', style({ opacity: 1 }))
+      ])
     ])
   ]
 })
